@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "adminUsername": {
-      "defaultValue": "useradmin",
+      "defaultValue": "semperti",
       "type": "string",
       "metadata": {
         "description": "Username for the Virtual Machine."
@@ -44,9 +44,36 @@
       ],
       "defaultValue": "Standard_B2ms"
     },
+    "deploymentType": {
+      "type": "string",
+      "defaultValue": "Server",
+      "allowedValues": [
+        "Nodes",
+        "Server"
+      ],
+      "metadata": {
+        "description": "Choose if you want to add nodes to an existing server or deploy a server without any nodes."
+      }
+    },
+    // "nodesApi": {
+    //   "type": "string",
+    //   "defaultValue": "",
+    //   "metadata": {
+    //     "description": "(Ignored for deploymentType server) The api link to your RancherHost."
+    //   }
+    // },
+    // "nodesCount": {
+    //   "type": "int",
+    //   "defaultValue": 1,
+    //   "metadata": {
+    //     "description": "(Ignored for deploymentType server) The amount of nodes to be provisioned"
+    //   },
+    //   "minValue": 1,
+    //   "maxValue": 5
+    // },
     "templateBase": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/jose-franco/azure-rancher-quickstart/master/server/",
+      "defaultValue": "https://raw.githubusercontent.com/jose-franco/azure-rancher-quickstart/master/",
       "metadata": {
         "description": "Change this value to your repo name if deploying from a fork"
       }
@@ -60,8 +87,13 @@
     }
   },
   "variables": {
+    "deployTypeParam": {
+      "Nodes": "nodes.json",
+      "Server": "server.json"
+    },
+    "deployTypeParamValue": "[variables('deployTypeParam')[parameters('deploymentType')]]",
     "templateBaseUrl": "[parameters('templateBase')]",
-    "templateDeployUrl": "[concat(variables('templateBaseUrl'), 'server.json')]"
+    "templateDeployUrl": "[concat(variables('templateBaseUrl'), variables('deployTypeParamValue'))]"
   },
   "resources": [
     {
@@ -84,9 +116,19 @@
           "rancherServerName": {
             "value": "[parameters('rancherServerName')]"
           },
+          // "rancherApi": {
+          //   "value": "[parameters('nodesApi')]"
+          // },
+          // "rancherNodeName": {
+          //   "value": "[parameters('uniqueDeployPrefix')]"
+          // },
           "rancherVmSize": {
             "value": "[parameters('vmSize')]"
           }
+          // },
+          // "rancherCount": {
+          //   "value": "[parameters('nodesCount')]"
+          // }
         }
       }
     }
