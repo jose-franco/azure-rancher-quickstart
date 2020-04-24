@@ -55,25 +55,25 @@
         "description": "Choose if you want to add nodes to an existing server or deploy a server without any nodes."
       }
     },
-    "nodesApi": {
-      "type": "string",
-      "defaultValue": "",
-      "metadata": {
-        "description": "(Ignored for deploymentType server) The api link to your RancherHost."
-      }
-    },
-    "nodesCount": {
-      "type": "int",
-      "defaultValue": 1,
-      "metadata": {
-        "description": "(Ignored for deploymentType server) The amount of nodes to be provisioned"
-      },
-      "minValue": 1,
-      "maxValue": 5
-    },
+    // "nodesApi": {
+    //   "type": "string",
+    //   "defaultValue": "",
+    //   "metadata": {
+    //     "description": "(Ignored for deploymentType server) The api link to your RancherHost."
+    //   }
+    // },
+    // "nodesCount": {
+    //   "type": "int",
+    //   "defaultValue": 1,
+    //   "metadata": {
+    //     "description": "(Ignored for deploymentType server) The amount of nodes to be provisioned"
+    //   },
+    //   "minValue": 1,
+    //   "maxValue": 5
+    // },
     "templateBase": {
       "type": "string",
-      "defaultValue": "https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master",
+      "defaultValue": "https://raw.githubusercontent.com/jose-franco/azure-rancher-quickstart/master/",
       "metadata": {
         "description": "Change this value to your repo name if deploying from a fork"
       }
@@ -92,7 +92,7 @@
       "Server": "server.json"
     },
     "deployTypeParamValue": "[variables('deployTypeParam')[parameters('deploymentType')]]",
-    "templateBaseUrl": "[concat(parameters('templateBase'), '/docker-rancher/')]",
+    "templateBaseUrl": "[parameters('templateBase')]",
     "templateDeployUrl": "[concat(variables('templateBaseUrl'), variables('deployTypeParamValue'))]"
   },
   "resources": [
@@ -116,7 +116,6 @@
           "rancherServerName": {
             "value": "[parameters('rancherServerName')]"
           },
-
           // "rancherApi": {
           //   "value": "[parameters('nodesApi')]"
           // },
