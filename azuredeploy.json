@@ -150,18 +150,19 @@
           "adminPassword": {
             "value": "[parameters('adminPassword')]"
           },
-          "rancherApi": {
-            "value": "[parameters('nodesApi')]"
-          },
-          "rancherNodeName": {
-            "value": "[parameters('uniqueDeployPrefix')]"
-          },
+          // "rancherApi": {
+          //   "value": "[parameters('nodesApi')]"
+          // },
+          // "rancherNodeName": {
+          //   "value": "[parameters('uniqueDeployPrefix')]"
+          // },
           "rancherVmSize": {
             "value": "[parameters('vmSize')]"
-          },
-          "rancherCount": {
-            "value": "[parameters('nodesCount')]"
           }
+          // },
+          // "rancherCount": {
+          //   "value": "[parameters('nodesCount')]"
+          // }
         }
       }
     }
