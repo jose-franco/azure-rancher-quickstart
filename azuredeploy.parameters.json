@@ -11,7 +11,7 @@
     "nodesApi": {
       "value": "GEN-UNIQUE"
     },
-    "uniqueDeployPrefix": {
+    "rancherServerName": {
       "value": "GEN-UNIQUE"
     },
     "vmSize": {
