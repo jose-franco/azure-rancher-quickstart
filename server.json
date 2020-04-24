@@ -16,20 +16,10 @@
         "description": "Password for the Virtual Machine."
       }
     },
-    "rancherApi": {
-      "type": "string",
-      "metadata": {
-        "description": "(ignore)"
-      }
-    },
-    "rancherNodeName": {
-      "type": "string",
-      "metadata": {
-        "description": "(ignore)"
-      }
-    },
     "rancherServerName": {
       "type": "string",
+            "minLength": 12,
+      "maxLength": 72,
       "metadata": {
         "description": "The prefix you want to use as hostname"
       }
