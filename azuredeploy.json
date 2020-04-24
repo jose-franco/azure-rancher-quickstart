@@ -16,8 +16,10 @@
     },
     "rancherServerName": {
       "type": "string",
+      "minLength": 5,
+      "maxLength": 72,
       "metadata": {
-        "description": "El nombre del equipo. Must be lowercase. It should match with the following regular expression: ^[a-z][a-z0-9-]{1,61}[a-z0-9]$ or it will raise an error."
+        "description": "The prefix you want to use as hostname"
       }
     },
     "vmSize": {
