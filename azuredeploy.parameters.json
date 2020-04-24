@@ -11,6 +11,9 @@
     "rancherServerName": {
       "value": "GEN-UNIQUE"
     },
+    "deploymentType": {
+      "value": "Server"
+    },
     "vmSize": {
       "value": "Standard_A2"
     },

@@ -44,6 +44,17 @@
       ],
       "defaultValue": "Standard_B2ms"
     },
+    "deploymentType": {
+      "type": "string",
+      "defaultValue": "Server",
+      "allowedValues": [
+        "Nodes",
+        "Server"
+      ],
+      "metadata": {
+        "description": "Choose if you want to add nodes to an existing server or deploy a server without any nodes."
+      }
+    },
     "templateBase": {
       "type": "string",
       "defaultValue": "https://raw.githubusercontent.com/jose-franco/azure-rancher-quickstart/master/server/",
@@ -60,8 +71,13 @@
     }
   },
   "variables": {
+    "deployTypeParam": {
+      "Nodes": "nodes.json",
+      "Server": "server.json"
+    },
+    "deployTypeParamValue": "[variables('deployTypeParam')[parameters('deploymentType')]]",
     "templateBaseUrl": "[parameters('templateBase')]",
-    "templateDeployUrl": "[concat(variables('templateBaseUrl'), 'server.json')]"
+    "templateDeployUrl": "[concat(variables('templateBaseUrl'), variables('deployTypeParamValue'))]"
   },
   "resources": [
     {
