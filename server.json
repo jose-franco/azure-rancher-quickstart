@@ -18,7 +18,7 @@
     },
     "rancherServerName": {
       "type": "string",
-            "minLength": 12,
+      "minLength": 5,
       "maxLength": 72,
       "metadata": {
         "description": "The prefix you want to use as hostname"
