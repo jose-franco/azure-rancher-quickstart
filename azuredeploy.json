@@ -152,6 +152,10 @@
           "adminPassword": {
             "value": "[parameters('adminPassword')]"
           },
+          "rancherServerName": {
+            "value": "[parameters('rancherServerName')]"
+          },
+
           // "rancherApi": {
           //   "value": "[parameters('nodesApi')]"
           // },

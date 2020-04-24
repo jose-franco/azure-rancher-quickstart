@@ -75,6 +75,7 @@
     }
   },
   "variables": {
+    "rancherServerName": "[toLower(parameters('rancherServerName'))]",
     "availabilitySetName": "[toLower(concat(parameters('rancherServerName'), '-avset'))]",
     "vmSize": "[parameters('rancherVmSize')]",
     "osImagePublisher": "Canonical",
